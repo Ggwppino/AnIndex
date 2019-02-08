@@ -19,12 +19,12 @@
             float: left;
             width: 5.0em;
             height: auto;
-            margin: 0px;
+            margin: 0;
         }
 
         .category_filter label span {
             text-align: center;
-            padding: 3px 0px;
+            padding: 3px 0;
             display: block;
             border-radius: 4px;
         }
@@ -55,7 +55,7 @@
 
 <div class="card-deck mx-3 p-5">
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top"  alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
@@ -66,7 +66,7 @@
         </div>
     </div>
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top"  alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
@@ -77,7 +77,7 @@
         </div>
     </div>
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's

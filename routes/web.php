@@ -27,3 +27,7 @@ Route::get('getlist',function(){
    echo json_encode($animelist->createFakeData());
    return;
 });
+
+Route::get('anime/createSeason','AnimeController@createSeason')->name('season.create');
+Route::view('/create', 'create.createAll');
+Route::post('/createAnime', 'AnimeController@createAnime')->name('create.anime');

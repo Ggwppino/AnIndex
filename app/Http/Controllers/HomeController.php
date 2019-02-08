@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Anime;
-use App\Genere;
-use App\Episode;
+use App\GenereOld;
+use App\EpisodeOld;
 
 use Illuminate\Http\Request;
 
@@ -18,12 +17,12 @@ class HomeController extends Controller
         $gen_name= array('Fantasy','Isekai','Comedy','Ecchi');
         $vect = array();
         for($i=0;$i<4;$i++){
-            $gen = new Genere ($i,$gen_name[$i]);
+            $gen = new GenereOld ($i,$gen_name[$i]);
             $vect[]= $gen->jsonSerialize();
         }
 
         for($i=48;$i>0;$i--){
-            $obj = new Episode($i,1,$title,$plot,$vect,$img);
+            $obj = new EpisodeOld($i,1,$title,$plot,$vect,$img);
             $vettore[]= $obj->jsonSerialize();
             }
          return $vettore;

@@ -12,7 +12,7 @@
                             interactive: true,
                             zIndex: 1019,
                             reactive : true,
-                            theme : 'dark',}">
+                            theme : 'dark'}">
                 </div>
                 <a class="title-anime" :href="'anim/'+ anime.info.id">{{anime.info.name}}</a>
                 <h4><span class="badge badge-primary episode-anime">Ep {{anime.ep}}</span></h4>

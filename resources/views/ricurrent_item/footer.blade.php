@@ -1,4 +1,5 @@
 <!-- Footer -->
+<script src="{{asset('js/app.js')}}"></script>
 <footer class="footer font-small  navbar-dark" id="topfooter">
 
 

@@ -9,11 +9,7 @@
 <div id="pagination">
     <print-anime :list-data="animes"/>
 </div>
-<script>
-    var episodes = [];
-</script>
 @include('ricurrent_item.footer')
-<script src="js/app.js" charset="utf-8" ></script>
 <script>
 
 </script>

@@ -8,7 +8,7 @@
         .category_filter {
             margin: 4px;
             background-color: transparent;
-            border-radius: 4px;
+            border-radius: 5px;
             border: 1px solid #6cb2eb;
             overflow: auto;
             color: #6cb2eb;
@@ -17,7 +17,7 @@
 
         .category_filter label {
             float: left;
-            width: 5.0em;
+            min-width: 5.0em;
             height: auto;
             margin: 0;
         }
@@ -26,7 +26,6 @@
             text-align: center;
             padding: 3px 0;
             display: block;
-            border-radius: 4px;
         }
 
         .category_filter label input {
@@ -52,135 +51,59 @@
 </head>
 <body>
 @include('ricurrent_item.header')
+<div class="container">
+    <h1>Create</h1>
+    <nav>
+        <div class="nav nav-tabs " id="nav-tab" role="tablist" style="width:60%">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+               aria-controls="nav-home" aria-selected="true">Anime</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+               aria-controls="nav-profile" aria-selected="false">Season</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+               aria-controls="nav-contact" aria-selected="false">Episode</a>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent" style="width:60%">
 
-<div class="card-deck mx-3 p-5">
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top"  alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
-                Create Anime
-            </button>
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <form id="createAnime" method="post" action="{{route('create.anime')}}">
+                @csrf
+                <div class="form-group">
+                    <label for="nomeinput">Name</label>
+                    <input class="form-control" type="text" name="name" id="nomeinput">
+                </div>
+                <div class="form-group">
+                    <label for="imginput">Img</label>
+                    <input class="form-control" type="text" name="img" id="imginput">
+                </div>
+                <div class="form-group">
+                    <label for="plot">Plot</label>
+                    <textarea class="form-control" id="plot" name="plot" rows="5"></textarea>
+                </div>
+                <span>Categories</span>
+                <div>
+                    @foreach(App\Genre::all() as $category)
+                        <div class="category_filter">
+                            <label>
+                                <input type="checkbox" name="genres[]"
+                                       value="{{$category->id}}"><span class="px-2">{{$category->name}}</span>
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
+                <button type="submit" form="createAnime" class="btn btn-primary" value="Submit">Create</button>
+            </form>
         </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top"  alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">
-                Create Anime
-            </button>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal3">
-                Create Anime
-            </button>
-        </div>
+
+
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
     </div>
 </div>
 
 
 @include('ricurrent_item.footer')
 
-
-
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Create Anime</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="createAnime" method="post" action="{{route('create.anime')}}">
-                    @csrf
-                    <div class="form-group">
-                        <label for="nomeinput">Name</label>
-                        <input class="form-control" type="text" name="name" id="nomeinput">
-                    </div>
-                    <div class="form-group">
-                        <label for="imginput">Img</label>
-                        <input class="form-control" type="text" name="img" id="imginput">
-                    </div>
-                    <span>Categories</span>
-                    <div>
-                        @foreach(App\Genre::all() as $cat)
-                            <div class="category_filter">
-                                <label>
-                                    <input type="checkbox" name="genres[]"
-                                           value="{{$cat->id}}"><span>{{$cat->name}}</span>
-                                </label>
-                            </div>
-                        @endforeach
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" form="createAnime" class="btn btn-primary" value="Submit">Create</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 </body>
 </html>

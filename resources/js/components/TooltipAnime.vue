@@ -1,5 +1,5 @@
 <template>
-    <div class='toolt'><h5 class='titletool'>{{info.name}}</h5>
+    <div class='toolt' :style="{'width': '350px'}"><h5 class='titletool'>{{info.name}}</h5>
         <h6 style='text-align: left'>Plot: </h6>
         <p class='plotool'>{{info.plot}}</p>
         <div id="generevue">

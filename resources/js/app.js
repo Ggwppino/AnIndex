@@ -4,6 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+
 require('./bootstrap');
 const axios =require('axios');
 
@@ -21,9 +22,9 @@ Vue.use(vueTippy);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('tooltip-anime', require('./components/TooltipAnime.vue'));
-Vue.component('print-anime', require('./components/TryPagination.vue'));
-Vue.component('generate-genere', require('./components/TooltipGeneres.vue'));
+Vue.component('tooltip-anime', require('./components/TooltipAnime.vue').default);
+Vue.component('print-anime', require('./components/TryPagination.vue').default);
+Vue.component('generate-genere', require('./components/TooltipGeneres.vue').default);
 // const files = require.context('./', true, /\.vue$/i)
 
 // files.keys().map(key => {

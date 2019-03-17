@@ -21,7 +21,7 @@ Route::get('/home', function(){
     return view('home.home');
 });
 Route::view('/single_anime','single_anime.anime');
-Route::get('/try','HomeController@paginationControl');
+Route::get('/try','HomeController@paginationControlTrue');
 Route::get('getlist',function(){
     $animelist = new \App\Http\Controllers\HomeController();
    echo json_encode($animelist->createFakeData());

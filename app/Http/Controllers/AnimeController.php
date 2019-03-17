@@ -27,4 +27,8 @@ class AnimeController extends Controller
         $anime->createSeason($request->name);
         return 'success';
     }
+
+    public function createEpisode(Request $request){
+        if(Episode::join())
+    }
 }

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(//fonts.googleapis.com/css?family=Roboto:300,400,500,700);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -34,7 +34,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: Roboto, sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -66,7 +66,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -2000,6 +2000,11 @@ pre code {
 }
 
 .form-control::-webkit-input-placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
+.form-control::-moz-placeholder {
   color: #6c757d;
   opacity: 1;
 }
@@ -4940,8 +4945,10 @@ input[type=button].btn-block {
 @media (min-width: 576px) {
   .card-columns {
     -webkit-column-count: 3;
+       -moz-column-count: 3;
             column-count: 3;
     -webkit-column-gap: 1.25rem;
+       -moz-column-gap: 1.25rem;
             column-gap: 1.25rem;
     orphans: 1;
     widows: 1;
@@ -6141,7 +6148,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6266,7 +6273,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -10655,6 +10662,98 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background-color: #272c38;
+  color: #c0c4cc;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+#barabba {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -55px;
+}
+
+.footer,
+#push {
+  height: 55px;
+  clear: both;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+.bg-dark {
+  background-color: #1f232d !important;
+}
+
+.nav-link {
+  color: #9fadbd !important;
+}
+
+.nav-link:hover {
+  color: #ffffff !important;
+}
+
+.input-group .form-control {
+  background-color: #00000000 !important;
+  border: none !important;
+  border-radius: 0px !important;
+  color: #9fadbd !important;
+  border-bottom: 1px solid #4e5567 !important;
+}
+
+.form-control {
+  box-shadow: none !important;
+}
+
+.navbar .btn-secondary {
+  border: none !important;
+  background-color: #00000000 !important;
+}
+
+.navbar .btn-secondary:hover {
+  color: #9fadbd !important;
+}
+
+#pagination .btn-secondary {
+  border: none !important;
+  background-color: #00000000 !important;
+}
+
+#pagination .btn-secondary:hover {
+  color: #9fadbd !important;
+}
+
+#pagination .btn-secondary:disabled {
+  color: transparent;
+}
+
+#pagination .btn-secondary:disabled:hover {
+  color: transparent !important;
+}
+
+#pagination .btn-secondary:focus {
+  box-shadow: none !important;
+}
+
+.tippy-tooltip.matherial-theme {
+  /* Your styling here. Example: */
+  background-color: #1f232d;
+  border: none;
+}
+
+.tippy-tooltip.matherial-theme .tippy-backdrop {
+  /* Your styling here. Example: */
+  background-color: transparent;
+}
+
 .searchbox {
   margin: 0 auto;
   width: 80%;
@@ -10701,7 +10800,6 @@ a.text-dark:focus {
 }
 
 .animecard .displayedimage {
-  transition: opacity 200ms ease-in-out;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: mintcream;
@@ -10721,11 +10819,12 @@ a.text-dark:focus {
   position: absolute;
   bottom: -5px;
   right: -5px;
+  background-color: #51589b;
 }
 
 .animecard .title-anime {
   position: absolute;
-  color: #3490dc;
+  color: #9fadbd;
   top: -25px;
   left: 0;
   font-size: medium;
@@ -10737,18 +10836,7 @@ a.text-dark:focus {
 }
 
 .animecard .title-anime:hover {
-  color: #6c757d;
-}
-
-.tippy-tooltip.dark-theme {
-  border: 5px solid #6cb2eb;
-  border-radius: 5px;
-}
-
-.tippy-tooltip.dark-theme .tippy-backdrop {
-  height: 100%;
-  border-radius: 5px;
-  background-color: #343a40;
+  color: #6cb2eb;
 }
 
 .toolt .plotool {
@@ -10756,13 +10844,14 @@ a.text-dark:focus {
   display: block;
   display: -webkit-box;
   max-width: 100%;
-  height: 216px;
+  height: 144px;
   margin: 0 auto;
   font-size: 12px;
   line-height: 1.5;
-  -webkit-line-clamp: 12;
+  -webkit-line-clamp: 8;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis !important;
+  -o-text-overflow: ellipsis;
 }
 
 .toolt a.btn-outline-info {
@@ -10773,8 +10862,8 @@ a.text-dark:focus {
   color: #343a40;
 }
 
-.colfoot {
-  margin-top: 5%;
+.footer-copyright {
+  z-index: 1020;
 }
 
 .parafoot {
@@ -10804,6 +10893,59 @@ a.colorlink:hover {
 
 tr {
   transition: background-color 80ms linear;
+}
+
+.category_filter {
+  margin: 4px;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #6cb2eb;
+  overflow: auto;
+  color: #6cb2eb;
+  float: left;
+}
+
+.category_filter label {
+  float: left;
+  width: 5em;
+  height: auto;
+  margin: 0;
+}
+
+.category_filter label span {
+  text-align: center;
+  padding: 3px 0;
+  display: block;
+  border-radius: 4px;
+}
+
+.category_filter label input {
+  position: absolute;
+  visibility: hidden;
+}
+
+.category_filter input:hover + span {
+  background-color: #e1e8eb;
+}
+
+.category_filter input:checked + span {
+  background-color: #6cb2eb;
+  color: #fff;
+}
+
+.category_filter input:checked:hover + span {
+  background-color: #4ca6eb;
+  color: #fff;
+}
+
+#navAnime {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.naviAnimeContainer {
+  position: relative;
 }
 
 .navbar-laravel {

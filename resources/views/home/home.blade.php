@@ -4,15 +4,17 @@
     @include('ricurrent_item.head')
 </head>
 <body>
-@include('ricurrent_item.header')
+<div id="barabba">
+    @include('ricurrent_item.header')
 
-<div id="pagination">
-    <print-anime :list-data="animes"/>
+    <div id="pagination">
+        <print-anime :list-data="animes"></print-anime>
+    </div>
+    <script>
+        var episodes = [];
+    </script>
+    <div id="push"></div>
 </div>
-@include('ricurrent_item.footer')
-<script>
-
-</script>
-
+@include('ricurrent_item.footer_min')
 </body>
 </html>

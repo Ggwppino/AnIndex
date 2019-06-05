@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Router;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,39 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+/*
+* Snippet for a quick route reference
+*/
+Route::get('/', function (Router $router) {
+    return collect($router->getRoutes()->getRoutesByMethod()["GET"])->map(function($value, $key) {
+        return url($key);
+    })->values();   
 });
+
+Route::resource('anime', 'AnimeAPIController', [
+    'only' => ['index', 'show', 'store', 'update', 'delete']
+]);
+
+Route::resource('tags', 'TagAPIController', [
+    'only' => ['index', 'show', 'store', 'update', 'delete']
+]);
+
+Route::resource('episodes', 'EpisodeAPIController', [
+    'only' => ['index', 'show', 'store', 'update', 'delete']
+]);
+
+Route::resource('fansubs', 'FansubAPIController', [
+    'only' => ['index', 'show', 'store', 'update', 'delete']
+]);
+
+Route::resource('commentEpisodes', 'Comment_EpisodeAPIController', [
+    'only' => ['index', 'show', 'store', 'update', 'delete']
+]);
+
+Route::resource('commentAnimes', 'Comment_AnimeAPIController', [
+    'only' => ['index', 'show', 'store', 'update', 'delete']
+]);
+
+Route::resource('users', 'UserAPIController', [
+    'only' => ['index', 'show', 'store', 'update', 'delete']
+]);

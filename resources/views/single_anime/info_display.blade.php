@@ -20,13 +20,7 @@
         Suspendisse lobortis ipsum vel ipsum sodales, et tristique arcu cursus. Cras sed faucibus odio, sed ornare
         augue. Curabitur bibendum facilisis ante sed interdum. Cras interdum dui iaculis lectus rhoncus ullamcorper.
         Phasellus tincidunt diam et dui accumsan pretium. Duis vel eros at ex blandit feugiat.
-
         Pellentesque gravida urna felis, ut eleifend lorem elementum vitae. Quisque lobortis hendrerit congue.
         Pellentesque a eleifend enim, quis molestie metus. Aenean efficitur turpis quam, eget rutrum magna efficitur
-        nec. Vestibulum eu purus tortor. In vel quam vitae neque suscipit efficitur. Ut interdum blandit consectetur.
-
-        Maecenas pulvinar efficitur eros ac luctus. Donec ullamcorper egestas velit vel porttitor. Curabitur sagittis,
-        tellus vel rhoncus malesuada, diam mi accumsan mi, in semper ante risus sodales augue. Maecenas aliquam metus
-        quis maximus facilisis. Vestibulum tortor est, aliquam nec velit eget, semper elementum elit. Aliquam ut blandit
-        nisi. Quisque ut ligula at arcu vehicula pulvinar. Nunc at imperdiet dolor, at maximus nunc.</p>
+        nec.</p>
     </div></div>

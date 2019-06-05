@@ -2,108 +2,152 @@
 <html>
 <head>
     @include('ricurrent_item.head')
-    <style>
-
-
-        .category_filter {
-            margin: 4px;
-            background-color: transparent;
-            border-radius: 5px;
-            border: 1px solid #6cb2eb;
-            overflow: auto;
-            color: #6cb2eb;
-            float: left;
-        }
-
-        .category_filter label {
-            float: left;
-            min-width: 5.0em;
-            height: auto;
-            margin: 0;
-        }
-
-        .category_filter label span {
-            text-align: center;
-            padding: 3px 0;
-            display: block;
-        }
-
-        .category_filter label input {
-            position: absolute;
-            visibility: hidden;
-        }
-
-        .category_filter input:hover + span {
-            background-color: #e1e8eb;
-        }
-
-        .category_filter input:checked + span {
-            background-color: #6cb2eb;
-            color: #fff;
-        }
-
-        .category_filter input:checked:hover + span {
-            background-color: #4ca6eb;
-            color: #fff;
-        }
-
-    </style>
 </head>
 <body>
 @include('ricurrent_item.header')
-<div class="container">
-    <h1>Create</h1>
-    <nav>
-        <div class="nav nav-tabs " id="nav-tab" role="tablist" style="width:60%">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-               aria-controls="nav-home" aria-selected="true">Anime</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-               aria-controls="nav-profile" aria-selected="false">Season</a>
-            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
-               aria-controls="nav-contact" aria-selected="false">Episode</a>
+<h1>Create</h1>
+<div class="card-deck mx-3 p-5">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Create Anime</h5>
+            <p class="card-text">Create an Anime instance with a standard form</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
+                Create Anime
+            </button>
         </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent" style="width:60%">
-
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <form id="createAnime" method="post" action="{{route('create.anime')}}">
-                @csrf
-                <div class="form-group">
-                    <label for="nomeinput">Name</label>
-                    <input class="form-control" type="text" name="name" id="nomeinput">
-                </div>
-                <div class="form-group">
-                    <label for="imginput">Img</label>
-                    <input class="form-control" type="text" name="img" id="imginput">
-                </div>
-                <div class="form-group">
-                    <label for="plot">Plot</label>
-                    <textarea class="form-control" id="plot" name="plot" rows="5"></textarea>
-                </div>
-                <span>Categories</span>
-                <div>
-                    @foreach(App\Genre::all() as $category)
-                        <div class="category_filter">
-                            <label>
-                                <input type="checkbox" name="genres[]"
-                                       value="{{$category->id}}"><span class="px-2">{{$category->name}}</span>
-                            </label>
-                        </div>
-                    @endforeach
-                </div>
-                <button type="submit" form="createAnime" class="btn btn-primary" value="Submit">Create</button>
-            </form>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Create Season</h5>
+            <p class="card-text">Create a Season instance relatives an Anime</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">
+                Create Season
+            </button>
         </div>
-
-
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Create Episode</h5>
+            <p class="card-text">Create an Episode instance relatives a Season of Anime</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal3">
+                Create Episode
+            </button>
+        </div>
     </div>
 </div>
+
+<h1>Update</h1>
 
 
 @include('ricurrent_item.footer')
 
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Create Anime</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createAnime" method="post" action="{{route('create.anime')}}">
+                    @csrf
+                    <div class="form-group">
+                        <label for="nomeinput">Name</label>
+                        <input class="form-control" type="text" name="name" id="nomeinput">
+                    </div>
+                    <div class="form-group">
+                        <label for="imginput">Image Preview</label>
+                        <input class="form-control" type="text" name="img" id="imginput">
+                    </div>
+                    <div class="form-group">
+                        <label for="plotinput">Plot</label>
+                        <textarea class="form-control" id="plotinput" rows="5" name="plot"></textarea>
+                    </div>
+                    <span>Categories</span>
+                    <div>
+                        @foreach(App\Genre::all() as $cat)
+                            <div class="category_filter">
+                                <label>
+                                    <input type="checkbox" name="genres[]"
+                                           value="{{$cat->id}}"><span>{{$cat->name}}</span>
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" form="createAnime" class="btn btn-primary" value="Submit">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Create Season</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createSeason" method="post" action="{{route('create.season')}}">
+                    @csrf
+                    <div class="form-group">
+                        <label for="animeinput">Name Anime</label>
+                        <select class="form-control" id="animeinput" name="anime">
+                            @foreach(App\Anime::all() as $anime)
+                                <option value="{{$anime->id}}">{{$anime->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nomeinput">Name Season</label>
+                        <input class="form-control" type="text" name="name" id="nomeinput">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" form="createSeason" class="btn btn-primary" name="Submit">Create Season</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

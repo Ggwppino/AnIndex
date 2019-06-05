@@ -21,13 +21,13 @@ Route::get('/home', function(){
     return view('home.home');
 });
 Route::view('/single_anime','single_anime.anime');
-Route::get('/try','HomeController@paginationControlTrue');
+Route::view('/try','try');
+Route::view('/create', 'create.createAll');
+Route::post('/createAnime', 'AnimeController@createAnime')->name('create.anime');
+Route::post('anime/createSeason','AnimeController@createSeason')->name('create.season');
 Route::get('getlist',function(){
     $animelist = new \App\Http\Controllers\HomeController();
    echo json_encode($animelist->createFakeData());
    return;
 });
 
-Route::get('anime/createSeason','AnimeController@createSeason')->name('season.create');
-Route::view('/create', 'create.createAll');
-Route::post('/createAnime', 'AnimeController@createAnime')->name('create.anime');

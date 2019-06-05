@@ -4,14 +4,15 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-
 require('./bootstrap');
 const axios =require('axios');
 
 window.Vue = require('vue');
 
-var vueTippy = require('vue-tippy');
+vueTippy = require('vue-tippy');
 Vue.use(vueTippy);
+
+
 
 
 /**
@@ -22,9 +23,10 @@ Vue.use(vueTippy);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('tooltip-anime', require('./components/TooltipAnime.vue').default);
-Vue.component('print-anime', require('./components/TryPagination.vue').default);
-Vue.component('generate-genere', require('./components/TooltipGeneres.vue').default);
+Vue.component('tooltip-anime', require("./components/TooltipAnime.vue").default);
+Vue.component('print-anime', require("./components/TryPagination.vue").default);
+Vue.component('generate-genere', require("./components/TooltipGeneres.vue").default);
+//Vue.component('example-component', require("./components/ExampleComponent.vue").default);
 // const files = require.context('./', true, /\.vue$/i)
 
 // files.keys().map(key => {
@@ -52,6 +54,9 @@ const pagination = new Vue({
             });
     }
 });
+
+
+
 
 
 

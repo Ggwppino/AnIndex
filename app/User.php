@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'grade_level'
     ];
 
     /**
@@ -25,6 +25,39 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime'
+    ];
+
+    /**
+     * Get the Comment_Episodes for the User.
+     */
+    public function commentEpisodes()
+    {
+        return $this->hasMany('App\Comment_Episode');
+    }
+
+    /**
+     * Get the Comment_Animes for the User.
+     */
+    public function commentAnimes()
+    {
+        return $this->hasMany('App\Comment_Anime');
+    }
+
+    /**
+     * Get the Fansubs for the User.
+     */
+    public function fansubs()
+    {
+        return $this->belongsToMany('App\Fansub');
+    }
 }

@@ -5,41 +5,40 @@
 </head>
 <body>
 @include('ricurrent_item.header')
-<h1>Create</h1>
-<div class="card-deck mx-3 p-5">
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Create Anime</h5>
-            <p class="card-text">Create an Anime instance with a standard form</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
-                Create Anime
-            </button>
+<div id="barabba"><h1>Create</h1>
+    <div class="card-deck mx-3 p-5">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Create Anime</h5>
+                <p class="card-text">Create an Anime instance with a standard form</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
+                    Create Anime
+                </button>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Create Season</h5>
+                <p class="card-text">Create a Season instance relatives an Anime</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">
+                    Create Season
+                </button>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Create Episode</h5>
+                <p class="card-text">Create an Episode instance relatives a Season of Anime</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal3">
+                    Create Episode
+                </button>
+            </div>
         </div>
     </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Create Season</h5>
-            <p class="card-text">Create a Season instance relatives an Anime</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">
-                Create Season
-            </button>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Create Episode</h5>
-            <p class="card-text">Create an Episode instance relatives a Season of Anime</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal3">
-                Create Episode
-            </button>
-        </div>
-    </div>
+    <div id="push"></div>
+
 </div>
-
-<h1>Update</h1>
-
-
-@include('ricurrent_item.footer')
+@include('ricurrent_item.footer_min')
 
 
 
@@ -58,7 +57,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="createAnime" method="post" action="{{route('create.anime')}}">
+                <form id="createAnime" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="nomeinput">Name</label>
@@ -73,8 +72,8 @@
                         <textarea class="form-control" id="plotinput" rows="5" name="plot"></textarea>
                     </div>
                     <span>Categories</span>
-                    <div>
-                        @foreach(App\Genre::all() as $cat)
+                    <div class="container">
+                        @foreach(App\Tag::all() as $cat)
                             <div class="category_filter">
                                 <label>
                                     <input type="checkbox" name="genres[]"
@@ -104,7 +103,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="createSeason" method="post" action="{{route('create.season')}}">
+                <form id="createSeason" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="animeinput">Name Anime</label>

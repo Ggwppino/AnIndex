@@ -1,0 +1,28 @@
+.input_animation {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.input_animation:after, .input_animation:before {
+    content: "";
+    height: 1px;
+    position: absolute;
+    background: #444;
+    left: 0;
+    bottom: 0;
+}
+
+.input_animation:before {
+    width: 100%;
+    right: 0;
+}
+
+.input_animation:after {
+    background: #2196F3;
+    max-width: 0;
+    transition: max-width 200ms linear;
+}
+
+.input_animation:focus:after {
+    max-width: 999px;
+}

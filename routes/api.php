@@ -24,29 +24,29 @@ Route::get('/', function (Router $router) {
 });
 
 Route::resource('anime', 'AnimeAPIController', [
-    'only' => ['index', 'show', 'store', 'update', 'delete']
+    'only' => ['index', 'show', 'store', 'update', 'destroy']
+]);
+
+Route::resource('targets', 'TargetAPIController', [
+    'only' => ['index', 'show', 'store', 'update', 'destroy']
+]);
+
+Route::resource('genres', 'GenreAPIController', [
+    'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);
 
 Route::resource('tags', 'TagAPIController', [
-    'only' => ['index', 'show', 'store', 'update', 'delete']
-]);
-
-Route::resource('episodes', 'EpisodeAPIController', [
-    'only' => ['index', 'show', 'store', 'update', 'delete']
+    'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);
 
 Route::resource('fansubs', 'FansubAPIController', [
-    'only' => ['index', 'show', 'store', 'update', 'delete']
+    'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);
 
-Route::resource('commentEpisodes', 'Comment_EpisodeAPIController', [
-    'only' => ['index', 'show', 'store', 'update', 'delete']
-]);
-
-Route::resource('commentAnimes', 'Comment_AnimeAPIController', [
-    'only' => ['index', 'show', 'store', 'update', 'delete']
+Route::resource('episodes', 'EpisodeAPIController', [
+    'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);
 
 Route::resource('users', 'UserAPIController', [
-    'only' => ['index', 'show', 'store', 'update', 'delete']
+    'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);

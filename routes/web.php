@@ -31,3 +31,6 @@ Route::get('getlist',function(){
    return;
 });
 
+Route::get('animecontroller-api/{id}','AnimeAPIController@show');
+Route::get('episodecontroller-api/{id}','EpisodeAPIController@show');
+

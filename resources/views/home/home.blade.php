@@ -6,7 +6,6 @@
 <body>
 <div id="barabba">
     @include('ricurrent_item.header')
-
     <div id="pagination">
         <print-anime :list-data="animes"></print-anime>
     </div>

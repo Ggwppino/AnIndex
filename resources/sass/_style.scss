@@ -148,9 +148,9 @@ h2 {
   // number of cards per line for each breakpoint
   $cards-per-line: (
           xs: 1,
-          sm: 1,
+          sm: 2,
           md: 3,
-          lg: 3,
+          lg: 4,
           xl: 4
   );
 
@@ -160,11 +160,11 @@ h2 {
         @if $breakpoint == 1200px {
           height: 160px;
         } @else if $breakpoint == 992px {
-          height: 160px;
+          height: 150px;
         } @else if $breakpoint == 768px {
-          height: 190px;
+          height: 140px;
         } @else {
-          height: 160px;
+          height: 140px;
         }
         flex: 0 0 calc(#{100/map-get($cards-per-line, $name)}% - #{$grid-gutter-width});
       }
@@ -474,7 +474,7 @@ input[type="password"] {
   // number of cards per line for each breakpoint
   $cards-per-line: (
           xs: 2,
-          sm: 2,
+          sm: 4,
           md: 6,
           lg: 8,
           xl: 10

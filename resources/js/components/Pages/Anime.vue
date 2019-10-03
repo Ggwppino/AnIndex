@@ -17,7 +17,7 @@
 
                     <div>
                         <span>Categories: </span>
-                        <a href="#" v-for="category in categories">{{category.name}}</a>
+                        <a href="#" v-for="category in categories" style="margin-right: 5px">{{category.name}}</a>
                     </div>
 
                     <div>
@@ -51,17 +51,7 @@
                 <div class="card-deck">
                     <div class="card my-4 animecard" v-for="(relation,index) in relations" :key="index">
                         <a class="displayedimage" :href="'/anime/' + relation.id"
-                             :style="'background-image: url(https://picsum.photos/215/300)'"
-                             v-tippy="{
-                            html: '#toolmin',
-                            arrow: false,
-                            placement: 'right-start',
-                            delay : [800,0],
-                            interactive: true,
-                            zIndex: 1019,
-                            reactive : true,
-                            duration : 300,
-                            theme : 'matherial'}">
+                             :style="'background-image: url(https://picsum.photos/215/300)'">
                             <div style="background-color: rgba(31,35,45,0.7); height: 30%; position:absolute; bottom:0; width:100%; text-align: center">
                                 <span style="color:#ff1d5e;font-size: small">{{sequel(relation.sequel)}}</span></div>
                         </a>
@@ -121,11 +111,11 @@
         },
         methods: {
             changeplotdiv: function () {
-                if (this.style.height === 'auto') this.style.height = '165px';
-                else this.style.height = 'auto';
+                if (this.styl.height === 'auto') this.styl.height = '165px';
+                else this.styl.height = 'auto';
             },
             sequel: function (sequel) {
-                if (sequel == 0) return "";
+                if (sequel == 0) return "Principal";
                 else if (sequel == 1) return "Sequel";
                 else if (sequel == 2) return "Prequel";
                 else if (sequel == 3) return "Side";

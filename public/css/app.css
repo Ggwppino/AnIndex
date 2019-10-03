@@ -10798,29 +10798,29 @@ h2 {
 
 @media (min-width: 0) {
   #slotanime .card-deck .card {
-    height: 160px;
+    height: 140px;
     flex: 0 0 calc(100% - 30px);
   }
 }
 
 @media (min-width: 576px) {
   #slotanime .card-deck .card {
-    height: 160px;
-    flex: 0 0 calc(100% - 30px);
+    height: 140px;
+    flex: 0 0 calc(50% - 30px);
   }
 }
 
 @media (min-width: 768px) {
   #slotanime .card-deck .card {
-    height: 190px;
+    height: 140px;
     flex: 0 0 calc(33.3333333333% - 30px);
   }
 }
 
 @media (min-width: 992px) {
   #slotanime .card-deck .card {
-    height: 160px;
-    flex: 0 0 calc(33.3333333333% - 30px);
+    height: 150px;
+    flex: 0 0 calc(25% - 30px);
   }
 }
 
@@ -11117,7 +11117,7 @@ input[type=password] {
 @media (min-width: 576px) {
   .relations .card-deck .card {
     height: 115px;
-    flex: 0 0 calc(50% - 30px);
+    flex: 0 0 calc(25% - 30px);
     margin-right: 0px !important;
   }
 }

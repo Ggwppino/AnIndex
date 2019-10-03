@@ -62,7 +62,8 @@ class AnimeAPIController extends Controller
 
     public function getRelations(int $anime_id)
     {
-        return DB::table('animes')->where('father', $anime_id)->select('id','name', 'img', 'sequel')->get();
+        $anime_father_id = AnimeAPIController::getAnime($anime_id)->father;
+        return DB::table('animes')->where('father', $anime_id)->orWhere('id', $anime_father_id)->select('id','name', 'img', 'sequel')->get();
     }
 
     public function getFansubs(int $anime_id){

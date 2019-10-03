@@ -1,23 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\GenereOld;
-use App\EpisodeOld;
 
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
-    public function createFakeData(){
-
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
-    public function paginationControl(){
-        /*connessione database: (finta per ora)*/
-        $vettore=$this->createFakeData();
-         /*passa a vue */
-        $vettore2=json_encode($vettore);
-        return view('home.home')->with('vettore',$vettore2);
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home');
     }
 }

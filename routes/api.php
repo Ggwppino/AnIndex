@@ -31,11 +31,11 @@ Route::resource('targets', 'TargetAPIController', [
     'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);
 
-Route::resource('genres', 'GenreAPIController', [
+Route::resource('categories', 'CategoryAPIController', [
     'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);
 
-Route::resource('tags', 'TagAPIController', [
+Route::resource('episodes', 'EpisodeAPIController', [
     'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);
 
@@ -43,7 +43,7 @@ Route::resource('fansubs', 'FansubAPIController', [
     'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);
 
-Route::resource('episodes', 'EpisodeAPIController', [
+Route::resource('fansubbers', 'FansubberAPIController', [
     'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);
 

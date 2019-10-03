@@ -1,26 +1,46 @@
 //override
-
+$matherialcolor: #ff1d5e;
 body {
   background-color: #272c38;
   color: #c0c4cc;
-  height:100%;
-}
-html{
-  height:100%;
+  height: 100%;
 }
 
-#barabba{
+html {
+  height: 100%;
+}
+
+a {
+  color: $matherialcolor;
+
+  &:hover {
+    color: $matherialcolor;
+    text-decoration: underline;
+  }
+}
+
+a.anime-link-info {
+  color: $matherialcolor !important;
+  border-color: $matherialcolor !important;
+
+  &:hover {
+    border-color: $matherialcolor !important;
+    background-color: $matherialcolor !important;
+    color: #343a40 !important;
+  }
+}
+
+.barabba {
   min-height: 100%;
   height: auto !important;
   height: 100%;
   margin: 0 auto -55px;
 }
 
-.footer, #push{
-  height:55px;
-  clear:both;
+.footer, #push {
+  height: 55px;
+  clear: both;
 }
-
 
 
 h2 {
@@ -33,10 +53,11 @@ h2 {
 }
 
 .nav-link {
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   color: #9fadbd !important;
 
   &:hover {
-    color: #ffffff !important;
+    color: $matherialcolor !important;
   }
 }
 
@@ -44,8 +65,9 @@ h2 {
   background-color: #00000000 !important;
   border: none !important;
   border-radius: 0px !important;
-  color: #9fadbd !important;
+  color: mix(white,#1f232d,70%);
   border-bottom: 1px solid #4e5567 !important;
+  transition: 300ms ease all;
 }
 
 .form-control {
@@ -58,18 +80,19 @@ h2 {
     background-color: #00000000 !important;
 
     &:hover {
-      color: #9fadbd !important;
+      color: $matherialcolor !important;
     }
   }
 }
 
 #pagination {
-  .btn-secondary {
+  .page-link {
     border: none !important;
-    background-color: #00000000 !important;
+    background-color: rgba(255, 0, 0, 0) !important;
+    color: #ffffff;
 
     &:hover {
-      color: #9fadbd !important;
+      color: $matherialcolor !important;
     }
 
     &:disabled {
@@ -89,10 +112,12 @@ h2 {
 .tippy-tooltip.matherial-theme {
   /* Your styling here. Example: */
   background-color: #1f232d;
-  border: none ;
+  border: none;
+
   .tippy-backdrop {
     /* Your styling here. Example: */
     background-color: transparent;
+
   }
 }
 
@@ -104,7 +129,7 @@ h2 {
 
   .input-group {
     margin: 0 auto;
-    width: 90%;
+    width: 80%;
   }
 }
 
@@ -124,7 +149,7 @@ h2 {
   $cards-per-line: (
           xs: 1,
           sm: 1,
-          md: 2,
+          md: 3,
           lg: 3,
           xl: 4
   );
@@ -135,11 +160,11 @@ h2 {
         @if $breakpoint == 1200px {
           height: 160px;
         } @else if $breakpoint == 992px {
-          height: 170px;
+          height: 160px;
         } @else if $breakpoint == 768px {
-          height: 200px;
+          height: 190px;
         } @else {
-          height: 250px;
+          height: 160px;
         }
         flex: 0 0 calc(#{100/map-get($cards-per-line, $name)}% - #{$grid-gutter-width});
       }
@@ -149,6 +174,8 @@ h2 {
 
 //style anime card
 .animecard {
+  border: 0px;
+  border-radius:0.25em;
   .displayedimage {
 
     background-repeat: no-repeat;
@@ -170,8 +197,9 @@ h2 {
     position: absolute;
     bottom: -5px;
     right: -5px;
-    background-color: #51589b;
+    background-color: $matherialcolor;
   }
+
 
   .title-anime {
     position: absolute;
@@ -184,9 +212,10 @@ h2 {
     text-overflow: ellipsis;
     width: 100%;
     text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
     &:hover {
-      color: #6cb2eb;
+      color: $matherialcolor;
     }
   }
 }
@@ -202,7 +231,8 @@ $line-height: 1.5;
     display: block;
     display: -webkit-box;
     max-width: 100%;
-    height: $size-font*$line*$line-height;
+    width: 300px;
+    max-height: $size-font*$line*$line-height;
     margin: 0 auto;
     font-size: $size-font;
     line-height: $line-height;
@@ -212,21 +242,16 @@ $line-height: 1.5;
     text-overflow: ellipsis !important;
     -o-text-overflow: ellipsis;
   }
-
-  a.btn-outline-info {
-    color: #6cb2eb;
-
-    &:hover {
-      color: #343a40;
-    }
-  }
 }
+
+
 
 
 //footer
 .colfoot {
 }
-.footer-copyright{
+
+.footer-copyright {
   z-index: 1020;
 }
 
@@ -244,10 +269,11 @@ $line-height: 1.5;
 
 a.colorlink {
   color: rgba(255, 255, 255, 0.75);
+  transition: 300ms ease all;
 }
 
 a.colorlink:hover {
-  color: rgba(255, 255, 255, 0.5);
+  color: #ff1d5e;
   text-decoration: none;
 }
 
@@ -275,7 +301,7 @@ tr {
   float: left;
   height: auto;
   margin: 0;
-  width:auto;
+  width: auto;
   min-width: 5.0em;
 }
 
@@ -283,9 +309,9 @@ tr {
   text-align: center;
   padding: 3px 0;
   display: block;
-  border-radius:0px;
-  padding-left:4px;
-  padding-right:4px;
+  border-radius: 0px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .category_filter label input {
@@ -309,12 +335,164 @@ tr {
 
 //paginazione
 
-#navAnime{
-  position:absolute;
-  top:0;
-  right:0;
+#navAnime {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
-.naviAnimeContainer{
-  position:relative;
+.naviAnimeContainer {
+  position: relative;
+}
+
+//Form underline
+
+.form-control {
+  background: none;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  border: none;
+  border-radius: 0;
+  &:focus {
+    outline: none;
+  }
+  &:focus ~ label,&:valid ~ label{
+    top: -10px;
+    font-size: 12px;
+    color: #ff1d5e;
+  }
+  &:focus ~ .bar:before {
+    width:100%;
+  }
+}
+
+input[type="password"] {
+  letter-spacing: 0.2em;
+}
+
+.input-label {
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  color: mix(white,#1f232d,40%);
+  top:10px;
+  left: 5px;
+  transition: 300ms ease all;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+  &:before {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    z-index:3;
+    position: absolute;
+    background: #ff1d5e;
+    transition: 300ms ease all;
+    left: 0%;
+  }
+}
+
+#forgotty{
+  transition: 200ms ease all ;
+  &:hover{
+      color:#ff1d5e !important;
+      text-decoration: none;
+  }
+}
+
+:focus {
+  outline: 0 !important;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: transparent !important;
+  background-color: #ff1d5e;
+}
+
+.captchadiv-enter,
+.captchadiv-leave-to {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.captchadiv-enter-active,
+.captchadiv-leave-active {
+  transition: ease all 0.3s;
+}
+
+.errorfade-enter-active, .errorfade-leave-active {
+  transition: opacity .5s;
+}
+.errorfade-enter, .errorfade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  transition: opacity .5s;
+  opacity: 0;
+}
+
+.boh-top {
+  transition: 300ms ease-in all;
+}
+
+
+.plotdiv{
+  min-height:165px;
+  height:165px;
+  overflow: hidden;
+}
+
+.erroralert{
+  width:300px;
+  position: sticky;
+  top: 10%;
+  margin: 0 auto;
+  z-index: 100;
+}
+
+.relations {
+  $grid-breakpoints: (
+          xs: 0,
+          sm: 576px,
+          md: 768px,
+          lg: 992px,
+          xl: 1200px
+  ) !default;
+
+  $grid-gutter-width: 10px !default;
+
+  // number of cards per line for each breakpoint
+  $cards-per-line: (
+          xs: 2,
+          sm: 2,
+          md: 6,
+          lg: 8,
+          xl: 10
+  );
+
+  @each $name, $breakpoint in $grid-breakpoints {
+    @media (min-width: $breakpoint) {
+      .card-deck .card {
+        @if $breakpoint == 1200px {
+          height: 115px;
+        } @else if $breakpoint == 992px {
+          height: 115px;
+        } @else if $breakpoint == 768px {
+          height: 115px;
+        } @else {
+          height: 115px;
+        }
+        flex: 0 0 calc(#{100/map-get($cards-per-line, $name)}% - #{$grid-gutter-width});
+        margin-right: 0px !important;
+      }
+    }
+  }
 }

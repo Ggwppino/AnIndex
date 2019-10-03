@@ -433,9 +433,11 @@ input[type="password"] {
 
 .errorfade-enter-active, .errorfade-leave-active {
   transition: opacity .5s;
+  transition: ease all 0.3s;
 }
 .errorfade-enter, .errorfade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   transition: opacity .5s;
+  transition: ease all 0.3s;
   opacity: 0;
 }
 

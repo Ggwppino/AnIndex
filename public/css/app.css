@@ -11077,11 +11077,13 @@ input[type=password] {
 .errorfade-enter-active,
 .errorfade-leave-active {
   transition: opacity 0.5s;
+  transition: ease all 0.3s;
 }
 
 .errorfade-enter,
 .errorfade-leave-to {
   transition: opacity 0.5s;
+  transition: ease all 0.3s;
   opacity: 0;
 }
 

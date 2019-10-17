@@ -6,7 +6,8 @@ use App\Anime;
 use App\Fansub;
 use App\Http\Resources\FansubCollection;
 use App\Http\Resources\FansubResource;
- 
+use Illuminate\Support\Facades\DB;
+
 class FansubAPIController extends Controller
 {
     public function index()
@@ -58,13 +59,13 @@ class FansubAPIController extends Controller
     }
 
     public function getLastWorks(int $fansub_id){
-        $tmp= Fansub::find($fansub_id)->episodes;
-        $data= $tmp->sortBy('created_at')->forPage(1,4);
-        for($i=0;$i<$data->count();$i++){
-           $data[$i]->anime_name = Anime::find($data[$i]->anime_id)->name;
-        }
-        return $data;
-
-
+        return DB::table('episode_fansub')
+            ->where('fansub_id', '=', $fansub_id)
+            ->orderByDesc('episode_fansub.created_at')
+            ->limit(4)
+            ->join('episodes', 'episodes.id', '=', 'episode_fansub.episode_id')
+            ->join('animes', 'animes.id','=','anime_id')
+            ->select('name', 'number', 'anime_id', 'episode_fansub.link')
+            ->get();
     }
 }

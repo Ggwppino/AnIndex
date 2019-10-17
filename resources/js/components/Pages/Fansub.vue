@@ -2,12 +2,12 @@
     <div class="my-4">
         <div class="container" style="height: 400px">
                 <div class="m-4" style="width:215px; display:inline; float:left">
-                    <div style="width:215px;height:300px"><img src="https://picsum.photos/215/300"></div>
+                    <div style="width:215px;height:300px; background-color: #ff1d5e"><img src="https://picsum.photos/215/300"></div>
                     <div class="btn btn-dark mt-2" style="width:100%;background-color: #ff1d5e">Follow</div>
                 </div>
                 <div style="display:inline;padding-top: 3rem !important; width:600px">
                     <h3 style="padding-top: 6rem !important">{{fansub.name}}</h3>
-                    <span :href="fansub.mainlink">Homepage</span>
+                    <a :href="fansub.mainlink">Homepage</a>
                     <br/>
                 </div>
         </div>
@@ -15,7 +15,7 @@
         <div class="container my-5 py-4 px-4"
              style="background-color: #1f232d !important; border-radius: 3px">
             <div id="slotanime" class="">
-                <div v-if="lastworks">
+                <div v-if="lastworks" class="mb-5">
                     <h5>Recent works</h5>
                     <div class="card-deck">
                         <div class="card my-4 animecard" v-for="(episode,indexx) in lastworks" :key="indexx">
@@ -33,7 +33,7 @@
                             theme : 'matherial'}" @mouseover="$refs.childepisode[indexx].getAnime()"
                             >
                             </div>
-                            <a class="title-anime" :href="'../../anime/'+ episode.anime_id">{{episode.anime_name}}</a>
+                            <a class="title-anime" :href="'../../anime/'+ episode.anime_id">{{episode.name}}</a>
                             <h4><span class="badge badge-primary episode-anime">Ep {{episode.number}}</span></h4>
                             <anime-info id="toolplotepisode" :anime_id="episode.anime_id" ref="childepisode"/>
 

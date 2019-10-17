@@ -27,6 +27,7 @@ Vue.component('Layout', require("./components/Shared/Layout.vue").default);
 Vue.component('Login', require("./components/Pages/Login.vue").default);
 Vue.component('Register', require("./components/Pages/Register.vue").default);
 Vue.component('anime', require("./components/Pages/Anime.vue").default);
+Vue.component('fansub', require("./components/Pages/Fansub.vue").default);
 //Vue.component('example-component', require("./components/ExampleComponent.vue").default);
 // const files = require.context('./', true, /\.vue$/i)
 
@@ -75,6 +76,13 @@ const pagination_anime_node = new Vue({
     el: '#paginationanime',
     data: {
         anime_node: ""
+    }
+});
+
+const pagination_fansub = new Vue({
+    el:'#paginationfansub',
+    data:{
+        fansub: ""
     }
 });
 

@@ -3,13 +3,13 @@
         <div class="container">
             <div style="">
                 <div class="m-4" style="width:215px; display:inline; float:left">
-                    <div><img src="https://picsum.photos/215/300"></div>
+                    <div style="width:215px;height:300px"><img src="https://picsum.photos/215/300"></div>
                     <div class="btn btn-dark mt-2" style="width:100%;background-color: #ff1d5e">Add to list</div>
                 </div>
                 <div style="display:inline;padding-top: 3rem !important; width:600px">
                     <h3 style="padding-top: 6rem !important">{{anime.name}}</h3>
                     <span v-if="anime.status == 0">Status: Ongoing</span>
-                    <span v-else-if="anime.status == 1">Status: Terminated</span>
+                    <span v-else-if="anime.status == 1">Status: Finished</span>
                     <span v-else-if="anime.status == 2">Status: Paused</span>
                     <span v-else>Error</span>
                     <br/>
@@ -22,12 +22,13 @@
 
                     <div>
                         <span>Fansubs: </span>
-                        <a href="#" v-for="fansub in fansubs" class="pr-2">{{fansub.name}}</a>
+                        <a :href="'../../fansub/'+ fansub.id" v-for="fansub in fansubs" class="pr-2">{{fansub.name}}</a>
                     </div>
                     <div @click="changeplotdiv">
-                        <div name="plotdiv" class="plotdiv" v-bind:style="styl"><p
-                                style="text-align:justify;font-size:18px">
-                            {{anime.plot}}</p></div>
+                            <div name="plotdiv" class="plotdiv" v-bind:style="styl" >
+                                <p style="text-align:justify;font-size:18px; ">{{anime.plot}}</p>
+                            </div>
+                        <div v-if="anime.plot.length>590 && styl.control===true" style="font-size:18px; margin-left: 263px; color: #ff1d5e" class="">Read More</div>
                     </div>
 
                 </div>
@@ -99,8 +100,9 @@
                 targets: [],
                 categories: [],
                 styl: {
-                    height: '165px',
+                    height: '169px',
                     overflow: 'hidden',
+                    control: true
                 },
                 relations: [],
                 episodes: [],
@@ -113,6 +115,7 @@
             changeplotdiv: function () {
                 if (this.styl.height === 'auto') this.styl.height = '165px';
                 else this.styl.height = 'auto';
+                this.styl.control= !this.styl.control;
             },
             sequel: function (sequel) {
                 if (sequel == 0) return "Principal";

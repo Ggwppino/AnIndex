@@ -49,7 +49,7 @@ class Fansub extends Model
     /**
      * Get the Anime for the Fansub.
      */
-    public function anime()
+    public function animes()
     {
         return $this->belongsToMany(\App\Anime::class);
     }

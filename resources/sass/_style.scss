@@ -65,7 +65,7 @@ h2 {
   background-color: #00000000 !important;
   border: none !important;
   border-radius: 0px !important;
-  color: mix(white,#1f232d,70%);
+  color: mix(white, #1f232d, 70%);
   border-bottom: 1px solid #4e5567 !important;
   transition: 300ms ease all;
 }
@@ -175,7 +175,8 @@ h2 {
 //style anime card
 .animecard {
   border: 0px;
-  border-radius:0.25em;
+  border-radius: 0.25em;
+
   .displayedimage {
 
     background-repeat: no-repeat;
@@ -243,8 +244,6 @@ $line-height: 1.5;
     -o-text-overflow: ellipsis;
   }
 }
-
-
 
 
 //footer
@@ -354,16 +353,19 @@ tr {
   display: block;
   border: none;
   border-radius: 0;
+
   &:focus {
     outline: none;
   }
-  &:focus ~ label,&:valid ~ label{
+
+  &:focus ~ label, &:valid ~ label {
     top: -10px;
     font-size: 12px;
     color: #ff1d5e;
   }
+
   &:focus ~ .bar:before {
-    width:100%;
+    width: 100%;
   }
 }
 
@@ -376,8 +378,8 @@ input[type="password"] {
   font-weight: normal;
   position: absolute;
   pointer-events: none;
-  color: mix(white,#1f232d,40%);
-  top:10px;
+  color: mix(white, #1f232d, 40%);
+  top: 10px;
   left: 5px;
   transition: 300ms ease all;
 }
@@ -386,12 +388,13 @@ input[type="password"] {
   position: relative;
   display: block;
   width: 100%;
+
   &:before {
     content: '';
     height: 2px;
     width: 0;
     bottom: 0px;
-    z-index:3;
+    z-index: 3;
     position: absolute;
     background: #ff1d5e;
     transition: 300ms ease all;
@@ -399,11 +402,12 @@ input[type="password"] {
   }
 }
 
-#forgotty{
-  transition: 200ms ease all ;
-  &:hover{
-      color:#ff1d5e !important;
-      text-decoration: none;
+#forgotty {
+  transition: 200ms ease all;
+
+  &:hover {
+    color: #ff1d5e !important;
+    text-decoration: none;
   }
 }
 
@@ -435,7 +439,9 @@ input[type="password"] {
   transition: opacity .5s;
   transition: ease all 0.3s;
 }
-.errorfade-enter, .errorfade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.errorfade-enter, .errorfade-leave-to /* .fade-leave-active below version 2.1.8 */
+{
   transition: opacity .5s;
   transition: ease all 0.3s;
   opacity: 0;
@@ -445,15 +451,15 @@ input[type="password"] {
   transition: 300ms ease-in all;
 }
 
-
-.plotdiv{
-  min-height:165px;
-  height:165px;
+.plotdiv {
+  min-height: 169px;
+  height: 169px;
   overflow: hidden;
 }
 
-.erroralert{
-  width:300px;
+
+.erroralert {
+  width: 300px;
   position: sticky;
   top: 10%;
   margin: 0 auto;

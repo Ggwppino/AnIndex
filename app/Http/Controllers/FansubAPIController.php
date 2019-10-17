@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Anime;
 use App\Fansub;
 use App\Http\Resources\FansubCollection;
 use App\Http\Resources\FansubResource;
@@ -54,5 +55,16 @@ class FansubAPIController extends Controller
             $animes[$i]= ['id' => $collections[$i]->id,'name' => $collections[$i]->name];
         }
         return $animes;
+    }
+
+    public function getLastWorks(int $fansub_id){
+        $tmp= Fansub::find($fansub_id)->episodes;
+        $data= $tmp->sortBy('created_at')->forPage(1,4);
+        for($i=0;$i<$data->count();$i++){
+           $data[$i]->anime_name = Anime::find($data[$i]->anime_id)->name;
+        }
+        return $data;
+
+
     }
 }

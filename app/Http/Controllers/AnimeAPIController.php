@@ -74,5 +74,9 @@ class AnimeAPIController extends Controller
         return AnimeAPIController::getAnime($anime_id)->episodes;
     }
 
+    public function getAnimeName(int $anime_id){
+        return AnimeAPIController::getAnime($anime_id)->name;
+    }
+
 
 }

@@ -15,6 +15,32 @@
         <div class="container my-5 py-4 px-4"
              style="background-color: #1f232d !important; border-radius: 3px">
             <div id="slotanime" class="">
+                <div v-if="lastworks">
+                    <h5>Recent works</h5>
+                    <div class="card-deck">
+                        <div class="card my-4 animecard" v-for="(episode,indexx) in lastworks" :key="indexx">
+                            <div class="displayedimage"
+                                 :style="'background-image: url(https://picsum.photos/260)'"
+                                 v-tippy="{
+                            html: '#toolplotepisode',
+                            arrow: false,
+                            placement: 'right-start',
+                            delay : [800,0],
+                            interactive: true,
+                            zIndex: 1019,
+                            reactive : true,
+                            duration : 300,
+                            theme : 'matherial'}" @mouseover="$refs.childepisode[indexx].getAnime()"
+                            >
+                            </div>
+                            <a class="title-anime" :href="'../../anime/'+ episode.anime_id">{{episode.anime_name}}</a>
+                            <h4><span class="badge badge-primary episode-anime">Ep {{episode.number}}</span></h4>
+                            <anime-info id="toolplotepisode" :anime_id="episode.anime_id" ref="childepisode"/>
+
+                        </div>
+                    </div>
+
+                </div>
                 <h5>Animes</h5>
                 <div v-if="loadanimes">
                     <self-building-square-spinner
@@ -62,6 +88,7 @@
         data: function () {
             return {
                 animes: [],
+                lastworks: [],
                 loadanimes: true
             }
         },
@@ -74,6 +101,13 @@
                     vm.animes = response.data;
                 })
                 .catch(function () {
+                    console.log("error");
+                });
+            axios.get('../../getLastWorks-api/'+ this.fansub.id)
+                .then(response =>{
+                    vm.lastworks= response.data;
+                })
+                .catch(function(){
                     console.log("error");
                 });
         }

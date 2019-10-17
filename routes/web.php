@@ -50,6 +50,8 @@ Route::get('getRelations-api/{id}','AnimeAPIController@getRelations');
 Route::get('getFansubs-api/{id}','AnimeAPIController@getFansubs');
 Route::get('getEpisodes-api/{id}','AnimeAPIController@getEpisodes');
 Route::get('getAnimes-api/{id}', 'FansubAPIController@getAnimes');
+Route::get('getLastWorks-api/{id}', 'FansubAPIController@getLastWorks');
+Route::get('getAnimeName-api/{id}', 'AnimeAPIController@getAnimeName');
 
 Route::get('animecontroller-api/{id}', 'AnimeAPIController@show');
 Route::get('episodecontroller-api/{id}', 'EpisodeAPIController@show');

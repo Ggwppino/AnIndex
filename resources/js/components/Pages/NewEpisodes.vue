@@ -20,8 +20,6 @@
                     </ul>
                 </nav>
             </div>
-
-
             <div class="card-deck">
                 <div class="card my-4 animecard" v-for="(episode,index) in paginatedData" :key="index">
                     <div class="displayedimage"
@@ -41,7 +39,6 @@
                     <a class="title-anime" :href="'anime/'+ episode.anime_id">{{episode.name}}</a>
                     <h4><span class="badge badge-primary episode-anime">Ep {{episode.number}}</span></h4>
                     <anime-info id="toolplot" :anime_id="episode.anime_id" ref="child"/>
-
                 </div>
             </div>
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Anime;
 use App\Fansub;
 use App\Http\Resources\FansubCollection;
 use App\Http\Resources\FansubResource;

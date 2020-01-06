@@ -1,2 +1,2 @@
 # AnIndex
-Website for fansub, anime and appassionate.
+An Index of animes for Fansubs and Appassionate

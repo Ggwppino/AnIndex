@@ -55,7 +55,6 @@ Route::get('getLastWorks-api/{id}', 'FansubAPIController@getLastWorks');
 Route::get('animecontroller-api/{id}', 'AnimeAPIController@show');
 Route::get('episodecontroller-api/{id}', 'EpisodeAPIController@show');
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

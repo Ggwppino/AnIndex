@@ -1,3 +1,8 @@
+<!--
+  -
+  - Copyright (c) 2020 Ggwppino.
+  -->
+
 <template>
     <main>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">

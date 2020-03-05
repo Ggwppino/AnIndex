@@ -1,3 +1,8 @@
+<!--
+  -
+  - Copyright (c) 2020 Ggwppino.
+  -->
+
 <template xmlns="http://www.w3.org/1999/html">
     <div class="container">
         <transition name="errorfade">

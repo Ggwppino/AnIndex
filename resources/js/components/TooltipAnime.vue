@@ -1,3 +1,8 @@
+<!--
+  -
+  - Copyright (c) 2020 Ggwppino.
+  -->
+
 <template>
 
     <div class='toolt'>

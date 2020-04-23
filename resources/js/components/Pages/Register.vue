@@ -57,7 +57,7 @@
                 <div class="invalid-feedback" style="display: flex" v-if="errors.password">
                     Must be 8-20 characters long.
                 </div>
-                <small id="emailHelp" class="form-text text-muted" v-else>Must be 8-20 characters long.</small>
+                <small id="emailHelp2" class="form-text text-muted" v-else>Must be 8-20 characters long.</small>
             </div>
             <div class="input-group" style="width:90%;margin:auto; padding-bottom:2em">
                 <input type="password" class="form-control" required="required" title="" v-model="repassword">
@@ -70,7 +70,7 @@
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="customCheck1" @click="viewcaptcha=!viewcaptcha"
                        v-model="terms">
-                <label class="custom-control-label" for="customCheck1" style="font-size: 12"><a href="#">You agree to
+                <label class="custom-control-label" for="customCheck1" style="font-size: 12px"><a href="#">You agree to
                     our terms of service</a></label>
             </div>
             <transition name="captchadiv">

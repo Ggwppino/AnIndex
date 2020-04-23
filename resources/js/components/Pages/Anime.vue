@@ -1,4 +1,3 @@
-
 <!--
   -
   - Copyright (c) 2020 Ggwppino.
@@ -23,18 +22,24 @@
 
                     <div>
                         <span>Categories: </span>
-                        <a href="#" v-for="category in anime.categories" style="margin-right: 5px">{{category.name}}</a>
+                        <a href="#" v-for="category in anime.categories" style="margin-right: 5px">
+                            {{category.name}}
+                        </a>
                     </div>
 
                     <div>
                         <span>Fansubs: </span>
-                        <a :href="'../../fansub/'+ fansub.id" v-for="fansub in anime.fansubs" class="pr-2">{{fansub.name}}</a>
+                        <a :href="'../../fansub/'+ fansub.id" v-for="fansub in anime.fansubs" class="pr-2">
+                            {{fansub.name}}
+                        </a>
                     </div>
                     <div @click="changeplotdiv">
-                            <div name="plotdiv" class="plotdiv" v-bind:style="styl" >
-                                <p style="text-align:justify;font-size:18px; ">{{anime.plot}}</p>
-                            </div>
-                        <div v-if="anime.plot.length>590 && styl.control===true" style="font-size:18px; margin-left: 263px; color: #ff1d5e" class="">Read More</div>
+                        <div name="plotdiv" class="plotdiv" v-bind:style="styl">
+                            <p style="text-align:justify;font-size:18px; ">{{anime.plot}}</p>
+                        </div>
+                        <div v-if="anime.plot.length>590 && styl.control===true"
+                             style="font-size:18px; margin-left: 263px; color: #ff1d5e" class="">Read More
+                        </div>
                     </div>
 
                 </div>
@@ -50,7 +55,7 @@
                 <div class="card-deck">
                     <div class="card my-4 animecard" v-for="(relation,index) in anime.relations" :key="index">
                         <a class="displayedimage" :href="'/anime/' + relation.id"
-                             :style="'background-image: url(https://picsum.photos/215/300)'">
+                           :style="'background-image: url(https://picsum.photos/215/300)'">
                             <div style="background-color: rgba(31,35,45,0.7); height: 30%; position:absolute; bottom:0; width:100%; text-align: center">
                                 <span style="color:#ff1d5e;font-size: small">{{sequel(relation.sequel)}}</span></div>
                         </a>
@@ -64,9 +69,9 @@
                 <span v-if="anime.episodes.length == 0">No Episodes</span>
                 <div class="card-deck">
                     <div class="card my-4 animecard" v-for="(episode,index) in anime.episodes" :key="index">
-                        <div class="displayedimage"
+                        <a class="displayedimage" :href="'/anime/'+anime.id+'/episode/' + episode.number"
                              :style="'background-image: url(https://picsum.photos/260)'">
-                        </div>
+                        </a>
                         <h4><span class="badge badge-primary episode-anime">Ep {{episode.number}}</span></h4>
                     </div>
                 </div>
@@ -77,7 +82,8 @@
 
 <script>
     import {SelfBuildingSquareSpinner} from 'epic-spinners';
-    import { CirclesToRhombusesSpinner } from 'epic-spinners';
+    import {CirclesToRhombusesSpinner} from 'epic-spinners';
+
     export default {
         props: {
             anime: Object
@@ -95,10 +101,10 @@
             changeplotdiv: function () {
                 if (this.styl.height === 'auto') this.styl.height = '165px';
                 else this.styl.height = 'auto';
-                this.styl.control= !this.styl.control;
+                this.styl.control = !this.styl.control;
             },
             sequel: function (sequel) {
-                if (sequel == 0) return "Principal";
+                if (sequel == 0) return "Main";
                 else if (sequel == 1) return "Sequel";
                 else if (sequel == 2) return "Prequel";
                 else if (sequel == 3) return "Side";

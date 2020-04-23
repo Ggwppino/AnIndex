@@ -27,7 +27,7 @@
             </div>
             <div class="card-deck">
                 <div class="card my-4 animecard" v-for="(episode,index) in paginatedData" :key="index">
-                    <div class="displayedimage"
+                    <a class="displayedimage" :href="'/anime/' + episode.anime_id + '/episode/'+ episode.number"
                          :style="'background-image: url(https://picsum.photos/260)'"
                          v-tippy="{
                             html: '#toolplot',
@@ -40,7 +40,7 @@
                             duration : 300,
                             theme : 'matherial'}" @mouseover="$refs.child[index].getAnime()"
                     >
-                    </div>
+                    </a>
                     <a class="title-anime" :href="'anime/'+ episode.anime_id">{{episode.name}}</a>
                     <h4><span class="badge badge-primary episode-anime">Ep {{episode.number}}</span></h4>
                     <anime-info id="toolplot" :anime_id="episode.anime_id" ref="child"/>

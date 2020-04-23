@@ -22,6 +22,15 @@ Route::get('/anime/{id}', function ($id) {
 });
 Route::get('/anime/{id}/{name}', 'AnimeAPIController@getAnimeView')->name('anime');
 
+//episode_routing
+Route::get('/anime/{id}/episode/{episode}', function($id,$episode){
+    $anime = \App\Anime::find($id);
+    if(!$anime) return redirect('/404');
+    return redirect()->route('episode',
+        ['id' => $id, 'name'=> \Illuminate\Support\Str::slug($anime->name, '-'), 'episode'=>$episode]);
+});
+Route::get('/anime/{id}/{name}/episode/{episode}', 'EpisodeAPIController@getEpisodeView')->name('episode');
+
 //fansub_routing
 Route::get('/fansub/{id}', function ($id) {
     $fansub = \App\Fansub::find($id);

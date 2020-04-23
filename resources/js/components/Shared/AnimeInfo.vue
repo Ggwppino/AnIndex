@@ -24,11 +24,11 @@
             </div>
             <div style='text-align: left;font-size:12px' class='my-3'>
                 <span style='font-size:15px'>Target: </span>
-                <a v-for="target in targets" :href="'../../target/'+ target.id">{{target.name}} </a>
+                <a v-for="target in anime.targets" :href="'../../target/'+ target.id">{{target.name}} </a>
             </div>
             <div style='text-align: left;font-size:12px' class='my-3'>
                 <span style='font-size:15px'>Categories: </span>
-                <a v-for="category in categories" :href="'../../category/'+ category.id">{{category.name}} </a>
+                <a v-for="category in anime.categories" :href="'../../category/'+ category.id">{{category.name}} </a>
             </div>
             <a class='btn btn-outline-info my-3 anime-link-info' :href=' "../../anime/" + anime.id '><i class='fas fa-share'></i>Anime</a>
         </div>
@@ -41,9 +41,7 @@
     export default {
         data() {
             return {
-                anime: [],
-                categories: [],
-                targets: [],
+                anime: Object,
                 loading: false,
                 check: false
             }
@@ -62,14 +60,8 @@
                     var vm = this;
                     axios.get('../../getAnimeInfo-api/' + vm.anime_id).then(response => {
                         vm.anime = response.data;
-                    });
-                    axios.get('../../getTarget-api/' + vm.anime_id).then(response => {
-                        vm.targets = response.data;
-                    });
-                    axios.get('../../getCategories-api/' + vm.anime_id).then(response => {
                         vm.loading = false;
                         vm.check = true;
-                        vm.categories = response.data;
                     });
                 }
             },

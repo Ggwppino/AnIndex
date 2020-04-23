@@ -50,7 +50,6 @@ const pagination = new Vue({
         axios.get('getList-api')
             .then(response => {
                 pagination.animes = response.data;
-                console.log(pagination.animes);
             })
             .catch(function (error) {
                 console.log(error);

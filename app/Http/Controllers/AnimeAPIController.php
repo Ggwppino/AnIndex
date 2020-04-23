@@ -17,7 +17,7 @@ class AnimeAPIController extends Controller
 
     public function show(Anime $anime)
     {
-        return new AnimeResource($anime->load(['episodes', 'targets', 'categories', 'fansubs', 'users']));
+        return new AnimeResource($anime->load(['targets', 'categories']));
     }
 
     public function store(Request $request)
@@ -39,40 +39,26 @@ class AnimeAPIController extends Controller
         return response()->json([], \Illuminate\Http\Response::HTTP_NO_CONTENT);
     }
 
+
+
+
     public function getAnimeView(int $anime_id)
     {
-        $data = Anime::find($anime_id);
-        return view('single_anime.anime', ['anime' => $data]);
+        $data = json_encode($this->show(Anime::find($anime_id)->load(['fansubs', 'episodes', 'users'])));
+        return view('single_anime.anime')->with('anime', $data);
+
     }
 
     public function getAnime(int $anime_id)
     {
-        return Anime::find($anime_id);
+        return json_encode($this->show(Anime::find($anime_id)));
     }
 
-    public function getCategories(int $anime_id)
-    {
-        return AnimeAPIController::getAnime($anime_id)->categories;
-    }
 
-    public function getTarget(int $anime_id)
+    public static function getRelations(int $anime_id)
     {
-        return AnimeAPIController::getAnime($anime_id)->targets;
-    }
-
-    public function getRelations(int $anime_id)
-    {
-        $anime_father_id = AnimeAPIController::getAnime($anime_id)->father;
+        $anime_father_id = Anime::find($anime_id)->father;
         return DB::table('animes')->where('father', $anime_id)->orWhere('id', $anime_father_id)->select('id','name', 'img', 'sequel')->get();
     }
-
-    public function getFansubs(int $anime_id){
-        return AnimeAPIController::getAnime($anime_id)->fansubs;
-    }
-
-    public function getEpisodes(int $anime_id){
-        return AnimeAPIController::getAnime($anime_id)->episodes;
-    }
-
 
 }

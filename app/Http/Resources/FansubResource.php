@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Controllers\FansubAPIController;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class FansubResource extends JsonResource
@@ -22,8 +23,10 @@ class FansubResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'fansubbers' => FansubberResource::collection($this->whenLoaded('fansubbers')),
-            'anime' => AnimeResource::collection($this->whenLoaded('anime')),
-            'episodes' => EpisodeResource::collection($this->whenLoaded('episodes'))
+            'animes' => AnimeResource::collection($this->whenLoaded('animes')),
+            'episodes' => $this->whenLoaded('episodes', function(){
+                return FansubAPIController::getLastWorks($this->id);
+            })
         ];
     }
 }

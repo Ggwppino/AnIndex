@@ -56,7 +56,7 @@ class User extends Authenticatable
     /**
      * Get the Anime for the User.
      */
-    public function anime()
+    public function animes()
     {
         return $this->belongsToMany(\App\Anime::class);
     }

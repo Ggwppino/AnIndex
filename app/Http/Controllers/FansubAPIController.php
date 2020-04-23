@@ -16,7 +16,7 @@ class FansubAPIController extends Controller
  
     public function show(Fansub $fansub)
     {
-        return new FansubResource($fansub->load(['fansubbers', 'anime', 'episodes']));
+        return new FansubResource($fansub->load(['fansubbers', 'animes', 'episodes']));
     }
 
     public function store(Request $request)
@@ -38,26 +38,23 @@ class FansubAPIController extends Controller
         return response()->json([], \Illuminate\Http\Response::HTTP_NO_CONTENT);
     }
 
-    public function getFansub(int $fansub_id)
-    {
-        return Fansub::find($fansub_id);
-    }
 
     public function getFansubView(int $fansub_id)
     {
-        $data = Fansub::find($fansub_id);
+        $data = json_encode($this->show(Fansub::find($fansub_id)));
         return view('profile.fansub', ['fansub' => $data]);
+
     }
 
-    public function getAnimes(int $fansub_id){
-        $collections= FansubAPIController::getFansub($fansub_id)->animes;
+    public static function getAnimes(int $fansub_id){
+        $collections= Fansub::find($fansub_id)->animes;
         for($i= 0; $i<$collections->count();$i++){
             $animes[$i]= ['id' => $collections[$i]->id,'name' => $collections[$i]->name];
         }
         return $animes;
     }
 
-    public function getLastWorks(int $fansub_id){
+    public static function getLastWorks($fansub_id){
         return DB::table('episode_fansub')
             ->where('fansub_id', '=', $fansub_id)
             ->orderByDesc('episode_fansub.created_at')

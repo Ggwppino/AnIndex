@@ -15,7 +15,7 @@ class FansubberAPIController extends Controller
  
     public function show(Fansubber $fansubber)
     {
-        return new FansubberResource($fansubber->load(['fansub', 'user']));
+        return new FansubberResource($fansubber->load(['fansub']));
     }
 
     public function store(Request $request)

@@ -12,7 +12,7 @@ class Fansubber extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'fansub_id', 'role'
+        'id', 'fansub_id', 'role'
     ];
 
     /**

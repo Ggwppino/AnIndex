@@ -38,7 +38,7 @@ class Category extends Model
     /**
      * Get the Anime for the Category.
      */
-    public function anime()
+    public function animes()
     {
         return $this->belongsToMany(\App\Anime::class);
     }

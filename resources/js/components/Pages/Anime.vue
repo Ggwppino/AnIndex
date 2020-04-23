@@ -19,16 +19,16 @@
                     <span v-else-if="anime.status == 2">Status: Paused</span>
                     <span v-else>Error</span>
                     <br/>
-                    <span>Target: <a v-for="target in targets">{{target.name}}</a></span>
+                    <span>Target: <a v-for="target in anime.targets">{{target.name}}</a></span>
 
                     <div>
                         <span>Categories: </span>
-                        <a href="#" v-for="category in categories" style="margin-right: 5px">{{category.name}}</a>
+                        <a href="#" v-for="category in anime.categories" style="margin-right: 5px">{{category.name}}</a>
                     </div>
 
                     <div>
                         <span>Fansubs: </span>
-                        <a :href="'../../fansub/'+ fansub.id" v-for="fansub in fansubs" class="pr-2">{{fansub.name}}</a>
+                        <a :href="'../../fansub/'+ fansub.id" v-for="fansub in anime.fansubs" class="pr-2">{{fansub.name}}</a>
                     </div>
                     <div @click="changeplotdiv">
                             <div name="plotdiv" class="plotdiv" v-bind:style="styl" >
@@ -46,17 +46,9 @@
              style="background-color: #1f232d !important; border-radius: 3px">
             <div class="relations">
                 <h5>Relations</h5>
-                <div v-if="loadrelations">
-                    <circles-to-rhombuses-spinner
-                            :animation-duration="1200"
-                            :circles-num="3"
-                            :circle-size="15"
-                            color="#ff1d5e"
-                    />
-                </div>
-                <span v-else-if="relations.length == 0">No Relations</span>
+                <span v-if="anime.relations.length == 0">No Relations</span>
                 <div class="card-deck">
-                    <div class="card my-4 animecard" v-for="(relation,index) in relations" :key="index">
+                    <div class="card my-4 animecard" v-for="(relation,index) in anime.relations" :key="index">
                         <a class="displayedimage" :href="'/anime/' + relation.id"
                              :style="'background-image: url(https://picsum.photos/215/300)'">
                             <div style="background-color: rgba(31,35,45,0.7); height: 30%; position:absolute; bottom:0; width:100%; text-align: center">
@@ -69,16 +61,9 @@
             </div>
             <div id="slotanime" class="mt-5">
                 <h5>Episodes</h5>
-                <div v-if="loadepisodes">
-                    <self-building-square-spinner
-                            :animation-duration="6000"
-                            :size="40"
-                            color="#ff1d5e"
-                    />
-                </div>
-                <span v-else-if="episodes.length == 0">No Episodes</span>
+                <span v-if="anime.episodes.length == 0">No Episodes</span>
                 <div class="card-deck">
-                    <div class="card my-4 animecard" v-for="(episode,index) in episodes" :key="index">
+                    <div class="card my-4 animecard" v-for="(episode,index) in anime.episodes" :key="index">
                         <div class="displayedimage"
                              :style="'background-image: url(https://picsum.photos/260)'">
                         </div>
@@ -97,24 +82,13 @@
         props: {
             anime: Object
         },
-        components:{
-            SelfBuildingSquareSpinner,
-            CirclesToRhombusesSpinner
-        },
         data: function () {
             return {
-                targets: [],
-                categories: [],
                 styl: {
                     height: '169px',
                     overflow: 'hidden',
                     control: true
-                },
-                relations: [],
-                episodes: [],
-                fansubs: [],
-                loadrelations: true,
-                loadepisodes: true
+                }
             }
         },
         methods: {
@@ -135,43 +109,7 @@
         mounted() {
             console.log("mounted anime page");
             const vm = this;
-            axios.get('../../getTarget-api/' + this.anime.id)
-                .then(response => {
-                    vm.targets = response.data;
-                })
-                .catch(function () {
-                    console.log("error");
-                });
-            axios.get('../../getCategories-api/'+ this.anime.id)
-                .then(response =>{
-                    vm.categories= response.data;
-                })
-                .catch(function(){
-                    console.log("error");
-                });
-            axios.get('../../getRelations-api/' + this.anime.id)
-                .then(response => {
-                    vm.loadrelations= false;
-                    vm.relations = response.data;
-                })
-                .catch(function () {
-                    console.log("error");
-                });
-            axios.get('../../getFansubs-api/' + this.anime.id)
-                .then(response => {
-                    vm.fansubs = response.data;
-                })
-                .catch(function () {
-                    console.log("error")
-                });
-            axios.get('../../getEpisodes-api/' + this.anime.id)
-                .then(response => {
-                    vm.loadepisodes = false;
-                    vm.episodes = response.data;
-                })
-                .catch(function () {
-                    console.log("error")
-                });
+
         }
     }
 </script>

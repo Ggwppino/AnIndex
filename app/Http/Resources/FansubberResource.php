@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class FansubberResource extends JsonResource
@@ -16,13 +17,12 @@ class FansubberResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user_id' => $this->user_id,
             'fansub_id' => $this->fansub_id,
             'role' => $this->role,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'fansub' => new FansubResource($this->whenLoaded('fansub')),
-            'user' => new UserResource($this->whenLoaded('user'))
+            'user' => new UserResource(User::find($this->id))
         ];
     }
 }

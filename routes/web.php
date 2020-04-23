@@ -36,24 +36,14 @@ Route::view('/create', 'create.createAll');
 Route::post('/createAnime', 'AnimeController@createAnime')->name('create.anime');
 Route::post('anime/createSeason', 'AnimeController@createSeason')->name('create.season');
 
-//api
 //  home
 Route::view('/', 'home.home');
 Route::view('/sign-in', 'sign.signin');
 Route::view('/sign-up', 'sign.signup');
-//Route::view('/', 'home.home');
+
+//call with axios
 Route::get('getList-api', 'EpisodeAPIController@getList');
 Route::get('getAnimeInfo-api/{id}', 'AnimeAPIController@getAnime');
-Route::get('getTarget-api/{id}', 'AnimeAPIController@getTarget');
-Route::get('getCategories-api/{id}', 'AnimeAPIController@getCategories');
-Route::get('getRelations-api/{id}','AnimeAPIController@getRelations');
-Route::get('getFansubs-api/{id}','AnimeAPIController@getFansubs');
-Route::get('getEpisodes-api/{id}','AnimeAPIController@getEpisodes');
-Route::get('getAnimes-api/{id}', 'FansubAPIController@getAnimes');
-Route::get('getLastWorks-api/{id}', 'FansubAPIController@getLastWorks');
-
-Route::get('animecontroller-api/{id}', 'AnimeAPIController@show');
-Route::get('episodecontroller-api/{id}', 'EpisodeAPIController@show');
 
 Auth::routes();
 

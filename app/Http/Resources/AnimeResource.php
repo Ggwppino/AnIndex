@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Controllers\AnimeAPIController;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AnimeResource extends JsonResource
@@ -24,6 +25,9 @@ class AnimeResource extends JsonResource
             'img' => $this->img,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'relations' => $this->whenLoaded('episodes', function(){
+                return AnimeAPIController::getRelations($this->id);
+            }),
             'episodes' => EpisodeResource::collection($this->whenLoaded('episodes')),
             'targets' => TargetResource::collection($this->whenLoaded('targets')),
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),

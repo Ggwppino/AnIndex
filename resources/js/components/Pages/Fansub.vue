@@ -20,11 +20,29 @@
 
         <div class="container my-5 py-4 px-4"
              style="background-color: #1f232d !important; border-radius: 3px">
+
+            <div class="relations">
+                <h5>Fansubber</h5>
+                <span v-if="!fansub.fansubbers">No Fansubber</span>
+                <div class="card-deck">
+                    <div class="card my-4 animecard" v-for="(fansubber,index) in fansub.fansubbers" :key="index">
+                        <a class="displayedimage" :href="'/user/' + fansubber.user_id"
+                           :style="'background-image: url(https://picsum.photos/215/300)'">
+                            <div style="background-color: rgba(31,35,45,0.7); height: 30%; position:absolute; bottom:0; width:100%; text-align: center">
+                                <div style="color:#ff1d5e; font-size: small;overflow:hidden; white-space: nowrap;  text-overflow: ellipsis; ">{{fansubber.user.name}}</div></div>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+
             <div id="slotanime" class="">
-                <div v-if="lastworks" class="mb-5">
+                <div v-if="fansub.episodes" class="mb-5">
                     <h5>Recent works</h5>
                     <div class="card-deck">
-                        <div class="card my-4 animecard" v-for="(episode,indexx) in lastworks" :key="indexx">
+                        <div class="card my-4 animecard" v-for="(episode,indexx) in fansub.episodes" :key="indexx">
                             <div class="displayedimage"
                                  :style="'background-image: url(https://picsum.photos/260)'"
                                  v-tippy="{
@@ -48,16 +66,9 @@
 
                 </div>
                 <h5>Animes</h5>
-                <div v-if="loadanimes">
-                    <self-building-square-spinner
-                            :animation-duration="6000"
-                            :size="40"
-                            color="#ff1d5e"
-                    />
-                </div>
-                <span v-else-if="animes.length == 0">No Animes</span>
+                <span v-if="fansub.animes.length == 0">No Animes</span>
                 <div class="card-deck">
-                    <div class="card my-4 animecard" v-for="(anime,index) in animes" :key="index">
+                    <div class="card my-4 animecard" v-for="(anime,index) in fansub.animes" :key="index">
                         <div class="displayedimage"
                              :style="'background-image: url(https://picsum.photos/260)'"
                              v-tippy="{
@@ -82,40 +93,17 @@
 </template>
 
 <script>
-    import {SelfBuildingSquareSpinner} from 'epic-spinners';
-
     export default {
         props: {
             fansub: Object
         },
-        components: {
-            SelfBuildingSquareSpinner,
-        },
         data: function () {
             return {
-                animes: [],
-                lastworks: [],
                 loadanimes: true
             }
         },
         mounted() {
             console.log("mounted anime page");
-            const vm = this;
-            axios.get('../../getAnimes-api/' + this.fansub.id)
-                .then(response => {
-                    vm.loadanimes= false;
-                    vm.animes = response.data;
-                })
-                .catch(function () {
-                    console.log("error");
-                });
-            axios.get('../../getLastWorks-api/'+ this.fansub.id)
-                .then(response =>{
-                    vm.lastworks= response.data;
-                })
-                .catch(function(){
-                    console.log("error");
-                });
         }
     }
 </script>
